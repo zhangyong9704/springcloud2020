@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: cloud-order-service
+    name: cloud-order-feignclient
 
 eureka:
   client:
@@ -13,5 +13,5 @@ eureka:
 #      defaultZone: http://localhost:7001/eureka   #单个发版
       defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/  #发布到集群eureka中
   instance:
-    instance-id: order80   #修改注册进eureka中(status)实例的显示名称,当前电脑默认显示：LAPTOP-RT5PR5EG:cloud-Payment-service:8001
+    instance-id: order80   #修改注册进eureka中(status)实例的显示名称,当前电脑默认显示：LAPTOP-RT5PR5EG:cloud-Payment-feignclient:8001
     prefer-ip-address: true    #鼠标移动到payment8001链接名称上，左下角显示Ip+端口的形式

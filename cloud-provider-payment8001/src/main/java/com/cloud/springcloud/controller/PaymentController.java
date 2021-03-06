@@ -51,10 +51,10 @@ public class PaymentController {
 
 
     @GetMapping("/discovery")   //服务发现
-    public Object getDiscoveryClient(){
+    public String getDiscoveryClient(){
 
         List<String> services = discoveryClient.getServices();  //获得已注册的服务
-        System.out.println(services);  //已注册的应用信息  [cloud-payment-service, cloud-order-service]
+        System.out.println(services);  //已注册的应用信息  [cloud-payment-feignclient, cloud-order-feignclient]
 
         //获取某个已注册服务下的具体实例名称
         List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
@@ -62,6 +62,30 @@ public class PaymentController {
             log.info(instance.getServiceId()+"\t"+instance.getHost()+"\t"+instance.getPort()+"\t"+instance.getUri());
             //192.168.1.6	8002	http://192.168.1.6:8002
         }
-        return services;
+        return services + ":" +serverPort;
     }
+
+        /**
+         * 获取端口号
+         * @return
+         */
+        @GetMapping("/port")
+        public String getServerPort(){
+
+            return serverPort;
+        }
+
+        /**
+         * 演示feign调用接口超时
+         * @return
+         */
+        @GetMapping("/feign/timeout")
+        public String getServerPortTimeOut(){
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return serverPort;
+        }
 }

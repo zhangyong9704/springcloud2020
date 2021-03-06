@@ -2,6 +2,9 @@ package com.cloud.springcloud.controller;
 
 import com.cloud.springcloud.entity.CommonResult;
 import com.cloud.springcloud.entity.Payment;
+import com.cloud.springcloud.loadbalance.LoadBalancer;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
+import java.net.URI;
+import java.util.List;
 
 /**
  * @author zy
@@ -24,6 +29,12 @@ public class OrderController {
 
     @Resource
     private RestTemplate restTemplate;
+
+    @Resource
+    LoadBalancer loadBalancer;   //自定义的的负载均衡算法
+
+    @Resource
+    private DiscoveryClient discoveryClient;   //发现服务
 
 //    private static final String REQUEST_URL = "http://localhost:8001/payment";
     private static final String REQUEST_URL = "http://CLOUD-PAYMENT-SERVICE";   //负载均衡访问，配置集群对外接口
@@ -63,6 +74,24 @@ public class OrderController {
     }
 
 
+    /**
+     * 测试自定义的负载均衡算法
+     * @return String
+     */
+    @GetMapping("/load")
+    public String testLoadBalance(){
+
+        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");  //获取存在的实例
+
+        if (instances ==null || instances.size()<=0){
+            System.out.println("服务实例未存在，请求失败");
+            return "服务实例未存在，请求失败";
+        }
+        ServiceInstance instance = loadBalancer.instance(instances);
+        URI uri = instance.getUri();   //获得访问的资源地址
+
+        return restTemplate.getForObject(uri + "/payment/discovery", String.class);
+    }
 
 
 
