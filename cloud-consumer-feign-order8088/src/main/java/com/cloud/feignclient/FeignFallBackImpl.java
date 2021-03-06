@@ -2,6 +2,7 @@ package com.cloud.feignclient;
 
 import com.cloud.springcloud.entity.CommonResult;
 import com.cloud.springcloud.entity.Payment;
+import org.springframework.stereotype.Component;
 
 /**
  * @author zy
@@ -10,6 +11,7 @@ import com.cloud.springcloud.entity.Payment;
  * @Description   feign 请求失败调用 回调函数
  * @CreateDate 2021-03-06  21:12:03
  */
+@Component
 public class FeignFallBackImpl implements PaymentFeignService {
 
     private final String RESULT = "系统繁忙，请稍后再试...";

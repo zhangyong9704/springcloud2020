@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @author zy
  * @version 1.0.0
  * @ClassName PaymentFeignService.java
- * @Description
+ * @Description  使用fallback   需要在配置文件中开启熔断服务
  * @CreateDate 2021-03-06  20:16:18
  */
 

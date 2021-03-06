@@ -1,0 +1,21 @@
+server:
+  port: 8005
+spring:
+  application:
+    name: cloud-provider-hystrix-payment
+
+eureka:
+  client:
+    register-with-eureka: true    #表示不向注册中心注册自己
+    fetch-registry: true   #表示自己就是注册中心，职责是维护服务实例，并不需要去检索服务
+    service-url:
+      # defaultZone: http://eureka7002.com:7002/eureka/    #设置与eureka server交互的地址查询服务和注册服务都需要依赖这个地址
+      defaultZone: http://eureka7001.com:7001/eureka/ #当前注册中心的服务地址
+      #defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/  #发布到集群eureka中
+  instance:
+    instance-id: hystrix8005   #修改注册进eureka中(status)实例的显示名称,当前电脑默认显示：LAPTOP-RT5PR5EG:cloud-Payment-feignclient:8001
+    prefer-ip-address: true    #鼠标移动到payment8001链接名称上，左下角显示Ip+端口的形式
+
+#  server:
+#    enable-self-preservation: false
+#    eviction-interval-timer-in-ms: 2000
