@@ -1,9 +1,6 @@
-server:
-  port: 8012
-
-spring:
-  application:
-    name: cloud-config-test
+config:
+  info: this is get from git config, version = 1
+  env: dev
 
 
 
