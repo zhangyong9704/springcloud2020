@@ -10,7 +10,7 @@ eureka:
     register-with-eureka: true
     fetchRegistry: true
     service-url:
-      #      defaultZone: http://localhost:7001/eureka   #单个发版
+#       defaultZone: http://localhost:7001/eureka   #单个发版
       defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/  #发布到集群eureka中
   instance:
     instance-id: order-feign-8088   #修改注册进eureka中(status)实例的显示名称,当前电脑默认显示：LAPTOP-RT5PR5EG:cloud-Payment-feignclient:8001

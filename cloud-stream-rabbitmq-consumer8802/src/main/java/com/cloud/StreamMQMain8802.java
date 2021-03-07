@@ -6,13 +6,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * @author zy
  * @version 1.0.0
- * @ClassName ConfigClientMain3355.java
- * @Description  配置中心客户端  读取数据 Bus动态刷新全局广播
- * @CreateDate 2021-03-07  14:53:46
+ * @ClassName StreamMQMain8802.java
+ * @Description 消息驱动之消费者
+ * @CreateDate 2021-03-07  18:40:48
  */
+
 @SpringBootApplication
-public class ConfigClientMain3355 {
+public class StreamMQMain8802 {
     public static void main(String[] args) {
-        SpringApplication.run(ConfigClientMain3355.class,args);
+        SpringApplication.run(StreamMQMain8802.class, args);
     }
 }

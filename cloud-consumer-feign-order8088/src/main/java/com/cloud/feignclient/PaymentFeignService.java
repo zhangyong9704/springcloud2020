@@ -47,4 +47,5 @@ public interface PaymentFeignService {
      */
     @GetMapping("/payment/feign/timeout")
     public String getServerPortTimeOut();
+
 }

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @CreateDate 2021-03-07  15:08:51
  */
 @RestController
-@RefreshScope   //动态刷新 需要运维人员发送Post请求刷新3355  必须是Post请求  curl -X POST "http://localhost:3355/actuator/refresh"
+@RefreshScope   //动态刷新 需要运维人员发送Post请求刷新3366  必须是Post请求  curl -X POST "http://localhost:3366/actuator/refresh"
 public class ConfigClientController {
 
 

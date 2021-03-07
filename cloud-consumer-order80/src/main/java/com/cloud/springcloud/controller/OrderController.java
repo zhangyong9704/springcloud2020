@@ -96,4 +96,15 @@ public class OrderController {
 
 
 
+    /**
+     * 调用8001 测试链路调用 zipkin+sleuth  http://localhost:9411/zipkin/ 图像化地址
+     * @return
+     */
+    @GetMapping("/payment/zipkin")
+    public String paymentZipkin()
+    {
+        return restTemplate.getForObject(REQUEST_URL+"/payment/zipkin", String.class);
+    }
+
+
 }

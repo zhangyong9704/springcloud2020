@@ -12,6 +12,12 @@
     <artifactId>cloud-provider-payment8002</artifactId>
 
     <dependencies>
+
+        <!--包含了sleuth+zipkin 引入链路追踪-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
         <!--引入eureka客户端注册的jar包-->
         <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-eureka-server -->
         <dependency>

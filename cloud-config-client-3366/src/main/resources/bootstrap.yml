@@ -1,9 +1,9 @@
-#bootstrap.yml 是用户级的资源配置项
+#application.yml 是用户级的资源配置项
 #bootstrap.yml是系统级配置，优先级更高，可以保证本地用户资源配置不会覆盖系统资源配置
 #因为bootstrap.yml比application.yml先加载，优先级更高
 
 server:
-  port: 3355
+  port: 3366
 
 spring:
   application:
@@ -20,16 +20,17 @@ eureka:
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka
 
-#统一订阅rabbitmq消息
+
+#统一订阅rabbitmq消息 ，15672是图像化访问端口，5672是访问端口
 rabbitmq:
   host: localhost
   port: 5672
   username: guest
   password: guest
 
-#暴露刷新端口
+#暴露监控端点
 management:
   endpoints:
     web:
       exposure:
-        include: '*'
+        include: "*"
