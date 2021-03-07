@@ -1,5 +1,5 @@
 config:
-  info: this is get from git config, version = 2
+  info: this is get from git config, version = 3
   env: master
 
 
