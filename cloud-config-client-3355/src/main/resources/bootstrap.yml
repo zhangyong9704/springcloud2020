@@ -1,0 +1,21 @@
+#application.yml 是用户级的资源配置项
+#bootstrap.yml是系统级配置，优先级更高，可以保证本地用户资源配置不会覆盖系统资源配置
+#因为bootstrap.yml比application.yml先加载，优先级更高
+
+server:
+  port: 3355
+
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:  #config客户端配置
+      label: master  #读取的分支名称
+      name: application  #读取的配置文件的名称
+      profile: dev  #读取配置文件后缀 -  之后的内容；即：master上有一个application-dev.yml的配置文件会被读取，https://localhost:3344/master/application-dev.yml
+      uri: http://localhost:3344  #读取配置中性的地址
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka

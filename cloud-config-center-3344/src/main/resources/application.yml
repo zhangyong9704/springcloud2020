@@ -7,10 +7,10 @@ spring:
     config:
       server:
         git:
-          uri:  填写你自己的github路径
-          search-paths:
+          uri:  https://github.com/zhangyong9704/springcloud2020.git  #git仓库连接地址 http://localhost:3344/master/application-dev.yml
+          search-paths:   #搜索的目录
             - springcloud-config
-      label: master
+      label: master  #读取的分支
 eureka:
   client:
     service-url:
